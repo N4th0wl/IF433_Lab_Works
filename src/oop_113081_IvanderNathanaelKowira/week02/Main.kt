@@ -45,4 +45,30 @@ fun main() {
     } else {
         println("Pilihan ngawur, pendaftaran batal!")
     }
+    // Sistem Peminjaman Buku
+    println("\n\n===== SISTEM PEMINJAMAN BUKU WEMEN =====\n")
+
+    print("Masukkan Judul Buku: ")
+    val bookTitle: String = scanner.nextLine()
+
+    print("Masukkan Nama Peminjam: ")
+    val borrower: String = scanner.nextLine()
+
+    print("Masukkan Lama Pinjam (Hari): ")
+    var duration: Int = scanner.nextInt()
+    scanner.nextLine()
+
+    // Validasi: Durasi (Hari) tidak boleh minus
+    if (duration < 0) {
+        duration = 1
+    }
+
+    val loan = Loan(bookTitle, borrower, duration)
+
+    println("\n=== Detail Peminjaman ===")
+    println("Judul Buku   : ${loan.bookTitle}")
+    println("Peminjam     : ${loan.borrower}")
+    println("Lama Pinjam  : ${loan.loanDuration} hari")
+    println("Total Denda  : Rp ${loan.calculateFine()}")
+
 }
