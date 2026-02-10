@@ -71,4 +71,61 @@ fun main() {
     println("Lama Pinjam  : ${loan.loanDuration} hari")
     println("Total Denda  : Rp ${loan.calculateFine()}")
 
+
+    // Simulasi Game Sederhana
+    println("\n===== GAME =====")
+
+    print("Nama Hero: ")
+    val heroName = scanner.nextLine()
+
+    print("Base Damage Hero: ")
+    val baseDamage = scanner.nextInt()
+    scanner.nextLine()
+
+    val hero = Hero(heroName, baseDamage)
+    var enemyHp = 100
+
+    while (hero.isAlive() && enemyHp > 0) {
+        println("==== MENU ====")
+        println("1. Serang")
+        println("2. Kabur")
+        print("Pilih Action: ")
+
+        val choice: Int = scanner.nextInt()
+
+        when (choice) {
+            1 -> {
+                hero.attack("Musuh")
+                enemyHp -= hero.baseDamage
+
+                if (enemyHp < 0) enemyHp = 0
+                println("HP Musuh tersisa: $enemyHp")
+
+                if (enemyHp > 0) {
+                    val enemyDamage: Int = (10..20).random()
+                    println("Musuh menyerang balik! Damage: $enemyDamage")
+                    hero.takeDamage(enemyDamage)
+                    println("HP ${hero.name} tersisa: ${hero.hp}")
+                }
+            }
+
+            2 -> {
+                println("${hero.name} kabur dari pertarungan!")
+                break
+            }
+
+            else -> {
+                println("Pilihan Action Tidak Valid")
+            }
+        }
+    }
+
+    println("\n===== HASIL PERTARUNGAN =====")
+    if(hero.isAlive() && enemyHp <= 0) {
+        println("${hero.name} MENANG!")
+    } else if (!hero.isAlive()) {
+        println("${hero.name} KALAH!")
+    } else {
+        println("PERTARUNGAN SERI")
+    }
 }
