@@ -10,9 +10,26 @@ fun main() {
     e.increasePerformance()
     println("Pajak yang harus dibayar: ${e.tax}")
     */
-    val weapon = Weapon("Pedangnya Pak Wirawan")
+
+    // Dari TASK 1
+    /*val weapon = Weapon("Pedangnya Pak Wirawan")
     // weapon.damage = -50
     weapon.damage = 9999
     println("Damage sekarang: ${weapon.damage}")
     println("Tier senjata: ${weapon.tier}")
+     */
+
+    // Dari TASK 2
+    val player = Player("Wowo Raja Sawit")
+
+    // ERROR : Hal ini terjadi karena xp bersifat private
+    // println(player.xp)
+
+    // Tambah 50 XP, masih level 1
+    player.addXp(50)
+    println("Level sekarang: ${player.level}")
+
+    // Tambah 60 XP, totalnya jadi 110 XP, naik ke level 2
+    player.addXp(60)
+    println("Level sekarang: ${player.level}")
 }
