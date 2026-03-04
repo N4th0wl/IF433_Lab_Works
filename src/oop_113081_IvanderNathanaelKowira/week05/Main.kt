@@ -48,5 +48,14 @@ fun main() {
 
     println("------------------------------------")
 
+    val ewallet = EWallet("Udin Petod", 50000.0)
+    val creditCard = CreditCard("Udin Petod", 100000.0)
 
+    val paymentMethods: List<PaymentMethod> = listOf(ewallet, creditCard)
+
+    for (method in paymentMethods) {
+        println("Metode Pembayaran: ${method.accountName}")
+        method.processPayment(75000.0)
+
+    }
 }
