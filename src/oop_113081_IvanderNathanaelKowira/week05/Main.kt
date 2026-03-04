@@ -28,4 +28,25 @@ fun main() {
         println("------------------------------------")
     }
 
+    // Bagian Tugas1 : MathHelper.kt
+    val mathHelper = MathHelper()
+
+    val luasPersegi = mathHelper.hitungLuas(3)
+    val luasPersegiPanjang = mathHelper.hitungLuas(4,5)
+    val luasLingkaran = mathHelper.hitungLuas(7.0)
+
+    println("=== Perhitungan Luas ===")
+    println("Luas Persegi: $luasPersegi")
+    println("Luas Persegi Panjang: $luasPersegiPanjang")
+    println("Luas Lingkaran: $luasLingkaran")
+
+    /*
+    println("Luas Persegi: ${mathHelper.hitungLuas(3)}")
+    println("Luas Persegi Panjang: ${mathHelper.hitungLuas(4, 6)}")
+    println("Luas Lingkaran: ${mathHelper.hitungLuas(7.0)}")
+    */
+
+    println("------------------------------------")
+
+
 }
