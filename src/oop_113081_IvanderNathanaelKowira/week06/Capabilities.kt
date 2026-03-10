@@ -5,6 +5,6 @@ interface BluetoothConnectable {
     fun connectToBluetooth()
 }
 
-interface Rechargaable {
+interface Rechargable {
     fun chargeBattery()
 }
