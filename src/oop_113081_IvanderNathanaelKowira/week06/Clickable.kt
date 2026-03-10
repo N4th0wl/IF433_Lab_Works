@@ -1,4 +1,6 @@
 package oop_113081_IvanderNathanaelKowira.week06
 
-class Clickable {
+interface Clickable {
+    val name: String // Abstract property, tidak ada nilai default
+    fun click()
 }
