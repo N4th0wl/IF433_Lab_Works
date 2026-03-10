@@ -2,7 +2,7 @@ package oop_113081_IvanderNathanaelKowira.week06
 
 class Smartwatch : Watch(), BluetoothConnectable, Rechargable {
     override fun showTime() {
-        println("Layar OLED menyala: 14:00 WIB)
+        println("Layar OLED menyala: 14:00 WIB")
     }
 
     override fun connectToBluetooth() {
