@@ -37,4 +37,11 @@ fun main() {
         is ApiResponse.Loading -> "Tampilkan Spinner"
     }
     println(uiMessage)
+
+    println("\n=== GAME SIMULATOR ===")
+
+    println("\n--- TEST GAME MANAGER ---")
+    GameManager.startGame()
+    GameManager.startGame()
+
 }
