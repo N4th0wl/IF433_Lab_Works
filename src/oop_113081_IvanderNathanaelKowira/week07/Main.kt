@@ -46,7 +46,15 @@ fun main() {
 
     println("\n--- TEST ENUM & FACTORY ---")
     println("Drop chance LEGENDARY: ${ItemRarity.LEGENDARY.dropChance}%")
-
     val starterWeapon = Weapon.forgeStarterSword()
     println("Senjata: ${starterWeapon.item.name}, Damage: ${starterWeapon.item.damage}")
+
+    println("\n--- TEST COPY (IMMUTABILITY) ---")
+    val upgradedItem = starterWeapon.item.copy(damage = 25)
+    println("Upgrade senjata: $upgradedItem")
+    println("\n--- TEST EVENT ---")
+    processEvent(BattleState.SafeZone)
+    processEvent(BattleState.MonsterEncounter("Goblin Nakal")) // Aku maunya Goblin Jomok Blukutuk blukutuk
+    processEvent(BattleState.LootDropped(upgradedItem))
+    processEvent(BattleState.GameOver("Terkena jebakan racun"))
 }
