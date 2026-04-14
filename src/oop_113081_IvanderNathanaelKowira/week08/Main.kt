@@ -41,12 +41,22 @@ fun main() {
     val safeString = someObject as? String ?: "Unknown String"
     println("Hasil cast + fallback: $safeString")
 
-    println("\n=== TEST THE RED BUTTON (!!) ===")
+   /* println("\n=== TEST THE RED BUTTON (!!) ===")
     val toxicData: String? = null
     try {
         // DANGEROUS: Memaksa compiler percaya data ini tidak null
         val length = toxicData!!.length
     } catch {
         println("CRASH (NPE)! Jangan gunakan !! secara sembarang.")
+    } */
+
+    val apiResponse: Map<String, String?> = mapOf("Status" to "200", "token" to null)
+    try {
+        // Alih-alih apiResponse["token"]!!
+        val token = requireNotNull(apiResponse["token"]) {
+            "CRITICAL EXCEPTION: Token otentikasi tidak ditemukan dari server"
+        }
+    } catch (e: IllegalArgumentException) {
+        println("ERROR: ${e.message}") // Mencetak pesan custom kita, bukan crash buta
     }
 }
