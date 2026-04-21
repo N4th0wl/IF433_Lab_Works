@@ -23,5 +23,12 @@ fun main() {
     val losingTrades = closedTrades
         .filter { it.roe <= 0 }
 
+    // Pipeline 4: Analisis Koin Profit Tertinggi (Sorting & Mapping):
+    val topPerformersString = winningTrades
+        .sortedByDescending { it.roe }
+        .map {
+            "WIN [${it.pair} - ${it.position}]: +${it.roe}% ROE (Lev: ${it.leverage}x)"
+        }
+
 
 }
