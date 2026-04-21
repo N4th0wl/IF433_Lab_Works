@@ -51,5 +51,10 @@ fun main() {
     println("\n--- UNIQUE TRADING PAIRS ---")
     println(uniquePairs)
 
-
+    println("\n=== PIPELINE COMPLETE ===")
+    println("Total trades recorded : ${tradeHistory.size}")
+    println("Closed trades         : ${closedTrades.size}")
+    println("Winning trades        : ${winningTrades.size}")
+    println("Losing trades         : ${losingTrades.size}")
+    println("Win Rate              : ${"%.1f".format(winningTrades.size.toDouble() / closedTrades.size * 100)}%")
 }
