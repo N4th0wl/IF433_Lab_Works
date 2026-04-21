@@ -11,6 +11,13 @@ fun main() {
         TradeLog("BTCUSDT", "LONG", 25, -2.5, "OPEN")
     )
 
+    // Pipeline 1: Ekstraksi Data Valid (Filter):
     val closedTrades = tradeHistory
         .filter { it.status == "CLOSED" }
+
+    // Pipeline 2: Memisahkan Winning Trades:
+    val winningTrades = closedTrades
+        .filter { it.roe > 0 }
+
+
 }
