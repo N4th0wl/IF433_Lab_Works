@@ -19,5 +19,9 @@ fun main() {
     val winningTrades = closedTrades
         .filter { it.roe > 0 }
 
+    // Pipeline 3: Memisahkan Losing Trades:
+    val losingTrades = closedTrades
+        .filter { it.roe <= 0 }
+
 
 }
