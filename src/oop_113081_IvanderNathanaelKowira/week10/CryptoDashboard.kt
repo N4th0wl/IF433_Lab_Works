@@ -10,7 +10,13 @@ fun main() {
     println("Status: ${response.status}")
     response.data.forEach { println("Coin: ${it.name}, Balance: ${it.balance}") }
 
+    println("\n=== TRANSACTION HISTORY ===")
     val txRepo = WalletRepository<Transaction>()
     txRepo.add(Transaction("TX001", 0.1))
     txRepo.add(Transaction("TX002", 50.0))
+
+    // Ambil data dari txRepo dan tampilkan menggunakan forEach
+    txRepo.getAll().forEach {
+        println("ID Transaksi: ${it.id}, Jumlah: ${it.amount}")
+    }
 }
