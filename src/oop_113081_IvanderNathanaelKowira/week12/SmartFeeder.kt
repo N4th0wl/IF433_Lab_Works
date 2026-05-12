@@ -35,5 +35,8 @@ fun main() {
     println("\n==== JADWAL MAKAN SORE ====")
     runCatching {
         dispenseKibble(requestedGram = 30, availableGram = 1000, isJammed = false)
+    }.onSuccess { newStock ->
+        currentKibbleStock = newStock
+        println("Makan sore berhasil! Sisa stock Kibble: $ $currentKibbleStock gr")
     }
 }
