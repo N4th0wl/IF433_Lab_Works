@@ -14,14 +14,20 @@ fun main() {
 
     println("\n=== TEST SAFE RESOURCE HANDLING ===")
     val safeFile = File("safe_logs.txt")
-
     // Writer akan OTOMATIS di-close saat keluar dari blok kurawal pembungkusnya
     safeFile.printWriter().use { out ->
         for (i in 1..100) {
             out.println("Safe Log entry #$i: System status OK.")
         }
     }
-
     println("100 baris log berhasil di-generate dengan sangat aman.")
-    
+
+    println("==== TEST BUFFERED HEADER ====")
+    // Membaca stream tanpa me-load seluuruh isi file ke RAM
+    safeFile.bufferedReader().use { reader ->
+        // KIta gunakan sequence dan ambil 5 baris pertama saja
+        reader.lineSequence().take(5).forEach{ line ->
+            println("Stream Read: $line")
+        }
+    } // FIle otomatis di-close di sini!
 }
