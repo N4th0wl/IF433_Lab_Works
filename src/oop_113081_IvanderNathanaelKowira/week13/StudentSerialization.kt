@@ -14,3 +14,17 @@ fun fromCsv(line: String): Student {
     return Student(parts[0], parts[1].toInt(), parts[2].toDouble())
 }
 
+// Fungsi untuk menyimpan seluruh daftar student ke file file teks
+fun saveStudents(students: List<Student>, path: String) {
+    File(path).writeText(students.joinToString(separator = "\n") { it.toCsv() })
+}
+
+// Fungsi untuk memuat data dari file kembali menjadi List<Student>
+fun loadStudents(path: String): List<Student> {
+    return try {
+        File(path).readLines().map { fromCsv(line = it) }
+    } catch (e: FileNotFoundException) {
+        println("Error: File tidak ditemukan!")
+        emptyList()
+    }
+}
