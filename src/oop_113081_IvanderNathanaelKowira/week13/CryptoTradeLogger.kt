@@ -62,4 +62,8 @@ fun main() {
 
     File(filePath).appendText("CORRUPT_ID, DOGEUSDT, Hold, XX ,YY\n")
     println("Data korup (DOGEUSDT) sengaja disuntikkan ke dalam file.")
+
+    val loadedData = loadTrades(filePath)
+    val totalPnl = loadedData.sumOf { it.pnl }
+
 }
