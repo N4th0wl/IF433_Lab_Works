@@ -1,6 +1,7 @@
 package oop_113081_IvanderNathanaelKowira.week13
 
 import java.io.File
+import java.io.FileNotFoundException
 
 // Data class untuk menampung record transaksi kripto
 data class TradeRecord(
@@ -36,5 +37,14 @@ fun saveTrades(trades: List<TradeRecord>, path: String) {
         trades.forEach { trade ->
             writer.println(trade.toCsv())
         }
+    }
+}
+
+fun loadTrades(path: String): List<TradeRecord> {
+    return try {
+        File(path).readLines().mapNotNull { fromCsvTrade(it) }
+    } catch (e: FileNotFoundException) {
+        println("Error: File histori transaksi tidak ditemukan!")
+        emptyList()
     }
 }
