@@ -59,3 +59,7 @@ fun main() {
     val filePath = "crypto_trades.csv"
     saveTrades(mockTrades, filePath)
     println("Berhasil menginisialisasi dan menyimpan mock data transaksi.")
+
+    File(filePath).appendText("CORRUPT_ID, DOGEUSDT, Hold, XX ,YY\n")
+    println("Data korup (DOGEUSDT) sengaja disuntikkan ke dalam file.")
+}
