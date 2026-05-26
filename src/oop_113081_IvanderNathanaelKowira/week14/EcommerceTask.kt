@@ -1,5 +1,7 @@
 package oop_113081_IvanderNathanaelKowira.week14
 
+import java.io.File
+
 class BadOrderProcessor {
     // VIOLATION: Hardcoded File I/O (DIP), Melakukan kalkulasi + I/O + Notifikasi sekaligus (SRP)
     private val file = File("orders.csv")
@@ -57,6 +59,31 @@ class SafeOrderProcessor(
         }
         println("Memproses pesanan $itemName seharga $finalPrice")
         repo.saveOrder(itemName, finalPrice, customerType)
+        notifier.sendNotification(itemName)
+    }
+}
+
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class RegularPricing : PricingStrategy {
+    override fun calculate(price: Double) = price
+}
+
+class VipPricing : PricingStrategy {
+    override fun calculate(price: Double) = price * 0.90
+}
+
+class BetterOrderProcessor(
+    val repo: OrderRepository,
+    val notifier: NotificationService,
+    val pricing: PricingStrategy
+) {
+    fun processOrder(itemName: String, basePrice: Double) {
+        val finalPrice = pricing.calculate(basePrice)
+        println("Memproses pesanan $itemName seharga $finalPrice")
+        repo.saveOrder(itemName, finalPrice, pricing::class.simpleName ?: "Unknown")
         notifier.sendNotification(itemName)
     }
 }
